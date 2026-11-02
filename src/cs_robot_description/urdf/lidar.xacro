@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Mid360 LiDAR Link -->
+  <link name="mid360">
+    <inertial>
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <mass value="0.005"/>
+      <inertia ixx="0.0000021667" ixy="0.0" ixz="0.0" iyy="0.0000021667" iyz="0.0" izz="0.000004"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://rm_9_2/models/mid360/meshes/mid360.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.001" length="0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Mid360 LiDAR Joint -->
+  <joint name="mid360_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="mid360"/>
+    <origin xyz="0.222 -0.222 0.25" rpy="0.67 0 0.78"/>
+  </joint>
+
+  <!-- Mid360 LiDAR — Ignition gpu_lidar sensor -->
+  <gazebo reference="mid360">
+    <sensor name="mid360_lidar" type="gpu_lidar">
+      <pose>0 0 0.03 0 0 0</pose>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>1500</samples>
+            <resolution>1.0</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>6.2831852</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>32</samples>
+            <resolution>1.0</resolution>
+            <min_angle>-0.12217304764</min_angle>
+            <max_angle>0.90757121104</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>40.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </lidar>
+      <topic>/lidar</topic>
+    </sensor>
+
+    <!-- Mid360 IMU — Ignition imu sensor -->
+    <sensor name="mid360_imu" type="imu">
+      <always_on>true</always_on>
+      <update_rate>200</update_rate>
+      <topic>/imu/mid360</topic>
+    </sensor>
+  </gazebo>
+
+</robot>

@@ -1,0 +1,8 @@
+controller_joint:
+  ros__parameters:
+    # 关节顺序: [0_joint, 1_joint, 2_joint, 3_joint]（rad）
+    # 当前数值是根据 CAD 估的，请按真车折叠机构修改
+    unfold_positions: [0.0, 1.0, 0.0, -1.0]   # 展开（Z 形，云台抬起）
+    fold_positions:   [0.0, 0.0, 0.0, 0.0]    # 折叠（一字，CAD 零位，最高点 0.259 m）
+    fold_speed: 1.5                           # rad/s
+    chassis_cmd_vel_topic: /rm92/cmd_vel

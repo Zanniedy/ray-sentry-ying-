@@ -1,0 +1,99 @@
+Panels:
+  - Class: rviz_common/Displays
+    Help Height: 78
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /RobotModel1
+        - /TF1
+      Splitter Ratio: 0.5
+    Tree Height: 549
+  - Class: rviz_common/Views
+    Name: Views
+    Property Tree Widget:
+      Expanded:
+        - /Current View1
+      Splitter Ratio: 0.5
+  - Class: rviz_common/Selection
+    Name: Selection
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Class: rviz_default_plugins/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.03
+        Value: Lines
+      Name: Grid
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 1
+      Class: rviz_default_plugins/RobotModel
+      Collision Enabled: false
+      Description Source: Topic
+      Description Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /robot_description
+      Enabled: true
+      Name: RobotModel
+      Visual Enabled: true
+      Value: true
+    - Class: rviz_default_plugins/TF
+      Enabled: true
+      Frame Timeout: 15
+      Marker Scale: 0.3
+      Name: TF
+      Show Arrows: true
+      Show Axes: false
+      Show Names: false
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 52; 58
+    Fixed Frame: base_link
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: true
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+    - Class: rviz_default_plugins/PublishPoint
+      Topic: /clicked_point
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 2.5
+      Focal Point: 0; 0; 0.3
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 0.35
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 0.75
+Window Geometry:
+  Height: 900
+  Width: 1400
+  X: 100
+  Y: 50
+  Displays:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 1400
+  X: 100
+  Y: 50
+  QMainWindow State: 000000ff00000000fd0000000400000000000001fc0000030efc0200000008fb000000100044006900730070006c006100790073000000003d000002b0000000b0000000000000000fb0000000a00560069006500770073010000003d00000117000000b0000000000000000fb0000001200530065006c0065006300740069006f006e0100000154000000ca0000000000000000000003c80000030efc0100000002fb000000100044006900730070006c00610079007302000000be000001cf0000017400fffffffb0000000a0056006900650077007300000001ce000001cf0000017400fffffffb0000001200530065006c0065006300740069006e00000003a8000000ca0000000000000000

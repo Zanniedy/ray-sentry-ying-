@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- 云台折叠关节用位置接口；底盘由 MecanumDrive2 插件直接驱动，轮子只读状态 -->
+  <xacro:macro name="gimbal_joint_if" params="name">
+    <joint name="${name}">
+      <command_interface name="position">
+        <param name="min">${-pi}</param>
+        <param name="max">${pi}</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:macro name="wheel_joint_if" params="name">
+    <joint name="${name}">
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </xacro:macro>
+
+  <ros2_control name="GazeboSimSystem" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+    <xacro:gimbal_joint_if name="0_joint"/>
+    <xacro:gimbal_joint_if name="1_joint"/>
+    <xacro:gimbal_joint_if name="2_joint"/>
+    <xacro:gimbal_joint_if name="3_joint"/>
+    <xacro:wheel_joint_if name="L1_JOINT"/>
+    <xacro:wheel_joint_if name="L2_JOINT"/>
+    <xacro:wheel_joint_if name="L3_JOINT"/>
+    <xacro:wheel_joint_if name="L4_JOINT"/>
+  </ros2_control>
+
+</robot>

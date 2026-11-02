@@ -1,0 +1,16 @@
+build/
+install/
+log/
+.cache/
+compile_commands.json
+__pycache__/
+*.pyc
+*.bak
+# vcs import 拉下来的第三方包
+src/pb2025_robot_description/
+src/rmoss_core/
+src/rmoss_gazebo/
+src/rmoss_gz_resources/
+src/rmoss_interfaces/
+src/rmu_gazebo_simulator/
+src/sdformat_tools/

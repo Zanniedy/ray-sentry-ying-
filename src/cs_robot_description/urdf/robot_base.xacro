@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<!-- 仿真用简化模型：视觉沿用 SolidWorks 导出的 STL，碰撞和惯量全部用基础形状。
+     原始导出版本备份在 sentry/backup/cs_robot_description_20261101 -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ===== 质量参数 (kg)，按真车修改 ===== -->
+  <xacro:property name="chassis_mass" value="18.0"/>
+  <xacro:property name="gimbal0_mass" value="3.0"/>   <!-- 大 yaw 平台 -->
+  <xacro:property name="gimbal2_mass" value="0.4"/>
+  <xacro:property name="gimbal1_mass" value="0.3"/>
+  <xacro:property name="gimbal3_mass" value="1.5"/>   <!-- 云台头 -->
+  <xacro:property name="wheel_mass"   value="0.5"/>
+  <xacro:property name="wheel_radius" value="0.076"/>
+  <xacro:property name="wheel_mu"     value="0.1"/>   <!-- 轮子摩擦，底盘由 MecanumDrive2 施力驱动，摩擦越小越不拖 -->
+
+  <!-- 实心盒子：碰撞 + 由尺寸自动算惯量 -->
+  <xacro:macro name="box_body" params="m xyz x y z">
+    <inertial>
+      <origin xyz="${xyz}" rpy="0 0 0"/>
+      <mass value="${m}"/>
+      <inertia ixx="${m*(y*y+z*z)/12}" ixy="0" ixz="0" iyy="${m*(x*x+z*z)/12}" iyz="0" izz="${m*(x*x+y*y)/12}"/>
+    </inertial>
+    <collision>
+      <origin xyz="${xyz}" rpy="0 0 0"/>
+      <geometry><box size="${x} ${y} ${z}"/></geometry>
+    </collision>
+  </xacro:macro>
+
+  <!-- 轮子用球：姿态无关，避免各轮导出坐标系不一致的问题 -->
+  <xacro:macro name="wheel_body" params="xyz">
+    <inertial>
+      <origin xyz="${xyz}" rpy="0 0 0"/>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="${0.4*wheel_mass*wheel_radius*wheel_radius}" ixy="0" ixz="0" iyy="${0.4*wheel_mass*wheel_radius*wheel_radius}" iyz="0" izz="${0.4*wheel_mass*wheel_radius*wheel_radius}"/>
+    </inertial>
+    <collision>
+      <origin xyz="${xyz}" rpy="0 0 0"/>
+      <geometry><sphere radius="${wheel_radius}"/></geometry>
+    </collision>
+  </xacro:macro>
+  <link name="base_link">
+    <xacro:box_body m="${chassis_mass}" xyz="0 0 0.14" x="0.50" y="0.50" z="0.16"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="package://rm_9_2/meshes/base_link.STL"/></geometry>
+      <material name="base_link_mat"><color rgba="1 1 1 1"/></material>
+    </visual>
+  </link>
+  <!-- ===== 云台（折叠机构）：0 为大 yaw，1/3 为两根平行水平轴 ===== -->
+  <link name="0_Link">
+    <xacro:box_body m="${gimbal0_mass}" xyz="0.03 0.03 0.118" x="0.42" y="0.42" z="0.183"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="package://rm_9_2/meshes/0_Link.STL"/></geometry>
+      <material name="0_Link_mat"><color rgba="0.929411764705882 0.929411764705882 0.929411764705882 1"/></material>
+    </visual>
+  </link>
+  <joint name="0_joint" type="revolute">
+    <origin xyz="0.00016203 0.0017341 0.049" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="0_Link"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="${-pi}" upper="${pi}" effort="50" velocity="5"/>
+  </joint>
+  <link name="2_Link">
+    <xacro:box_body m="${gimbal2_mass}" xyz="0.034 0.047 0.013" x="0.131" y="0.156" z="0.056"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="package://rm_9_2/meshes/2_Link.STL"/></geometry>
+      <material name="2_Link_mat"><color rgba="0.0823529411764706 0.0823529411764706 0.0823529411764706 1"/></material>
+    </visual>
+  </link>
+  <joint name="2_joint" type="revolute">
+    <origin xyz="-0.13474 -0.061646 0.11285" rpy="0 0 0"/>
+    <parent link="0_Link"/>
+    <child link="2_Link"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="${-pi}" upper="${pi}" effort="50" velocity="5"/>
+  </joint>
+  <link name="1_Link">
+    <xacro:box_body m="${gimbal1_mass}" xyz="0.029 0.061 -0.04" x="0.107" y="0.172" z="0.167"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="package://rm_9_2/meshes/1_Link.STL"/></geometry>
+      <material name="1_Link_mat"><color rgba="0.929411764705882 0.929411764705882 0.929411764705882 1"/></material>
+    </visual>
+  </link>
+  <joint name="1_joint" type="revolute">
+    <origin xyz="0.031859 0.062468 0.015" rpy="-1.1408 -1.5708 0"/>
+    <parent link="2_Link"/>
+    <child link="1_Link"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="${-pi}" upper="${pi}" effort="50" velocity="5"/>
+  </joint>
+  <link name="3_Link">
+    <xacro:box_body m="${gimbal3_mass}" xyz="0.004 -0.091 0.048" x="0.057" y="0.288" z="0.168"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="package://rm_9_2/meshes/3_Link.STL"/></geometry>
+      <material name="3_Link_mat"><color rgba="0.929411764705882 0.929411764705882 0.929411764705882 1"/></material>
+    </visual>
+  </link>
+  <joint name="3_joint" type="revolute">
+    <origin xyz="0.054117 0.1182 -0.0065" rpy="-3.1416 0 3.1416"/>
+    <parent link="1_Link"/>
+    <child link="3_Link"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="${-pi}" upper="${pi}" effort="50" velocity="5"/>
+  </joint>
+  <!-- ===== 轮子：被动转动，仅视觉和支撑 ===== -->
+  <link name="L1_Link">
+    <xacro:wheel_body xyz="0 0 -0.025"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="3.14 0 0"/>
+      <geometry><mesh filename="package://rm_9_2/meshes/L1_Link.STL"/></geometry>
+      <material name="L1_Link_mat"><color rgba="0.1 0.1 0.1 1"/></material>
+    </visual>
+  </link>
+  <gazebo reference="L1_Link">
+    <mu1>${wheel_mu}</mu1>
+    <mu2>${wheel_mu}</mu2>
+  </gazebo>
+  <joint name="L1_JOINT" type="continuous">
+    <origin xyz="-0.16707 0.16896 0.09735" rpy="2.3562 -1.5708 0"/>
+    <parent link="base_link"/>
+    <child link="L1_Link"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="10" velocity="100"/>
+  </joint>
+  <link name="L2_Link">
+    <xacro:wheel_body xyz="0 0.025 0"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="-1.57 0 0"/>
+      <geometry><mesh filename="package://rm_9_2/meshes/L2_Link.STL"/></geometry>
+      <material name="L2_Link_mat"><color rgba="0.1 0.1 0.1 1"/></material>
+    </visual>
+  </link>
+  <gazebo reference="L2_Link">
+    <mu1>${wheel_mu}</mu1>
+    <mu2>${wheel_mu}</mu2>
+  </gazebo>
+  <joint name="L2_JOINT" type="continuous">
+    <origin xyz="0.16739 0.16896 0.09735" rpy="0.7854 1.5708 0"/>
+    <parent link="base_link"/>
+    <child link="L2_Link"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="100"/>
+  </joint>
+  <link name="L3_Link">
+    <xacro:wheel_body xyz="0 0 0.025"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="package://rm_9_2/meshes/L3_Link.STL"/></geometry>
+      <material name="L3_Link_mat"><color rgba="0.1 0.1 0.1 1"/></material>
+    </visual>
+  </link>
+  <gazebo reference="L3_Link">
+    <mu1>${wheel_mu}</mu1>
+    <mu2>${wheel_mu}</mu2>
+  </gazebo>
+  <joint name="L3_JOINT" type="continuous">
+    <origin xyz="0.16739 -0.1655 0.09735" rpy="0.7854 1.5708 0"/>
+    <parent link="base_link"/>
+    <child link="L3_Link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="100"/>
+  </joint>
+  <link name="L4_Link">
+    <xacro:wheel_body xyz="0 0.025 0"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="-1.57 0 0"/>
+      <geometry><mesh filename="package://rm_9_2/meshes/L4_Link.STL"/></geometry>
+      <material name="L4_Link_mat"><color rgba="0.1 0.1 0.1 1"/></material>
+    </visual>
+  </link>
+  <gazebo reference="L4_Link">
+    <mu1>${wheel_mu}</mu1>
+    <mu2>${wheel_mu}</mu2>
+  </gazebo>
+  <joint name="L4_JOINT" type="continuous">
+    <origin xyz="-0.167068721301789 -0.165496637547365 0.0973500000000011" rpy="2.35619449019234 -1.5707963267949 0"/>
+    <parent link="base_link"/>
+    <child link="L4_Link"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="100"/>
+  </joint>
+</robot>
+

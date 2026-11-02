@@ -1,0 +1,9 @@
+# World selection: empty_world / rmul_2024_world / rmul_2025_world / rmuc_2024_world / rmuc_2025_world
+world: rmul_2024_world
+
+robot:
+  name: rm92   # 也是 Ignition 模型名；不能含 '.'，否则 cmd_vel 话题无法桥接到 ROS
+  x_pose: "-3.0"
+  y_pose: "3.0"
+  z_pose: "0.3"
+  yaw: "0.0"

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- gz_ros2_control plugin (Ignition Gazebo) -->
+  <gazebo>
+    <plugin filename="libgz_ros2_control-system.so"
+            name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>$(find rm_9_2)/config/controller.yaml</parameters>
+      <!-- 指定从 /rm92 namespace 下的 robot_state_publisher 读取 robot_description，
+           避免与同机其他项目的 robot_state_publisher 冲突 -->
+      <robot_param_node>/rm92/robot_state_publisher</robot_param_node>
+    </plugin>
+  </gazebo>
+
+  <!-- Ground Truth Odometry via ros_gz_bridge (publish /odom/ground_truth) -->
+  <gazebo>
+    <plugin filename="libignition-gazebo-odometry-publisher-system.so"
+            name="ignition::gazebo::systems::OdometryPublisher">
+      <odom_frame>world</odom_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <odom_topic>odom/ground_truth</odom_topic>
+    </plugin>
+  </gazebo>
+
+  <!-- 全向底盘：订阅 Ignition 话题 <model_name>/cmd_vel（车体系 vx vy wz），
+       对 base_link 施加力/力矩跟踪速度，并发布 <model_name>/odometry。
+       插件来自 rmoss_gz_plugins（需 source 本工作空间 install/setup.bash） -->
+  <gazebo>
+    <plugin filename="MecanumDrive2" name="ignition::gazebo::systems::MecanumDrive2">
+      <chassis_link>base_link</chassis_link>
+      <front_left_joint>L2_JOINT</front_left_joint>    <!-- (+x,+y) -->
+      <front_right_joint>L3_JOINT</front_right_joint>  <!-- (+x,-y) -->
+      <rear_left_joint>L1_JOINT</rear_left_joint>      <!-- (-x,+y) -->
+      <rear_right_joint>L4_JOINT</rear_right_joint>    <!-- (-x,-y) -->
+    </plugin>
+  </gazebo>
+</robot>

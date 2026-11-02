@@ -1,0 +1,817 @@
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+
+<robot name="RM_9.2">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.176820900855033 -0.175767887988963 0.282903303054145"
+        rpy="0 0 0" />
+      <mass
+        value="360.133016387821" />
+      <inertia
+        ixx="22.1930264454615"
+        ixy="1.96384312719146"
+        ixz="-3.96632525840175"
+        iyy="22.1933687704428"
+        iyz="3.96634658513196"
+        izz="29.4144160372898" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="0_Link">
+    <inertial>
+      <origin
+        xyz="0.129246654483412 0.0469975667609316 0.150847530903861"
+        rpy="0 0 0" />
+      <mass
+        value="9.18110160302843" />
+      <inertia
+        ixx="0.0355967710398909"
+        ixy="-0.00113422077596564"
+        ixz="0.000166575601987494"
+        iyy="0.0367789764100297"
+        iyz="9.1706970065931E-05"
+        izz="0.0513294406196902" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/0_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.929411764705882 0.929411764705882 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/0_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="0_joint"
+    type="revolute">
+    <origin
+      xyz="0.00016203 0.0017341 0.049"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="0_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="2_Link">
+    <inertial>
+      <origin
+        xyz="0.0226282219668464 0.0297235640362042 0.00756351773403635"
+        rpy="0 0 0" />
+      <mass
+        value="0.339093979202257" />
+      <inertia
+        ixx="0.00014061050033489"
+        ixy="4.84324633176815E-05"
+        ixz="-1.26967892506409E-06"
+        iyy="0.000204432188655888"
+        iyz="8.43024213604875E-08"
+        izz="0.000281492963052569" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0823529411764706 0.0823529411764706 0.0823529411764706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="2_joint"
+    type="revolute">
+    <origin
+      xyz="-0.13474 -0.061646 0.11285"
+      rpy="0 0 0" />
+    <parent
+      link="0_Link" />
+    <child
+      link="2_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="1_Link">
+    <inertial>
+      <origin
+        xyz="0.0334301553776608 0.0876263255503278 -0.0212245241592933"
+        rpy="0 0 0" />
+      <mass
+        value="0.245679561080256" />
+      <inertia
+        ixx="0.000304822617015465"
+        ixy="9.6437172749603E-05"
+        ixz="7.91908426193528E-07"
+        iyy="0.000105578185223026"
+        iyz="1.68300946241182E-06"
+        izz="0.000386086805594892" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.929411764705882 0.929411764705882 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="1_joint"
+    type="revolute">
+    <origin
+      xyz="0.031859 0.062468 0.015"
+      rpy="-1.1408 -1.5708 0" />
+    <parent
+      link="2_Link" />
+    <child
+      link="1_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="3_Link">
+    <inertial>
+      <origin
+        xyz="-0.00567337425396985 -0.146880093217144 0.0661507711294554"
+        rpy="0 0 0" />
+      <mass
+        value="1.45973129653464" />
+      <inertia
+        ixx="0.00316018119656665"
+        ixy="-3.3270924935867E-06"
+        ixz="-7.13619061403583E-08"
+        iyy="0.00133798063169172"
+        iyz="-0.000142145158618851"
+        izz="0.00230624156577075" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.929411764705882 0.929411764705882 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="3_joint"
+    type="revolute">
+    <origin
+      xyz="0.054117 0.1182 -0.0065"
+      rpy="-3.1416 0 3.1416" />
+    <parent
+      link="1_Link" />
+    <child
+      link="3_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="L1_Link">
+    <inertial>
+      <origin
+        xyz="0.000200723842264286 -0.000266575875718419 0.0348642669617424"
+        rpy="0 0 0" />
+      <mass
+        value="0.547275059892877" />
+      <inertia
+        ixx="0.000243154118711685"
+        ixy="2.59548057050181E-06"
+        ixz="-1.44951452998462E-07"
+        iyy="0.000247139725450857"
+        iyz="2.66191921413007E-07"
+        izz="0.000468451643972505" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="3.14 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/L1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/L1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L1_JOINT"
+    type="revolute">
+    <origin
+      xyz="-0.16707 0.16896 0.09735"
+      rpy="2.3562 -1.5708 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="L1_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="L2_Link">
+    <inertial>
+      <origin
+        xyz="-0.000200723842264314 0.000266575875718392 0.0348642669617424"
+        rpy="0 0 0" />
+      <mass
+        value="0.547275059892878" />
+      <inertia
+        ixx="0.000243154118711685"
+        ixy="2.59548057050168E-06"
+        ixz="1.44951452998453E-07"
+        iyy="0.000247139725450857"
+        iyz="-2.66191921413156E-07"
+        izz="0.000468451643972506" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="-1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/L2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/L2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L2_JOINT"
+    type="revolute">
+    <origin
+      xyz="0.16739 0.16896 0.09735"
+      rpy="0.7854 1.5708 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="L2_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="L3_Link">
+    <inertial>
+      <origin
+        xyz="-0.000200723842264314 0.00026657587571835 0.0348642669617422"
+        rpy="0 0 0" />
+      <mass
+        value="0.547275059892878" />
+      <inertia
+        ixx="0.000243154118711685"
+        ixy="2.59548057050169E-06"
+        ixz="1.44951452998483E-07"
+        iyy="0.000247139725450857"
+        iyz="-2.66191921413061E-07"
+        izz="0.000468451643972506" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/L3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/L3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L3_JOINT"
+    type="revolute">
+    <origin
+      xyz="0.16739 -0.1655 0.09735"
+      rpy="0.7854 1.5708 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="L3_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="L4_Link">
+    <inertial>
+      <origin
+        xyz="0.000200723842264272 -0.000266575875718364 0.0348642669617422"
+        rpy="0 0 0" />
+      <mass
+        value="0.547275059892878" />
+      <inertia
+        ixx="0.000243154118711685"
+        ixy="2.59548057050171E-06"
+        ixz="-1.44951452998537E-07"
+        iyy="0.000247139725450857"
+        iyz="2.66191921413048E-07"
+        izz="0.000468451643972506" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="-1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/L4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rm_9_2/meshes/L4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L4_JOINT"
+    type="revolute">
+    <origin
+      xyz="-0.167068721301789 -0.165496637547365 0.0973500000000011"
+      rpy="2.35619449019234 -1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="L4_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1"
+      effort="1"
+      velocity="1" />
+  </joint>
+
+  <!-- Mid360 LiDAR Link -->
+  <link name="mid360">
+    <inertial>
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <mass value="0.005"/>
+      <inertia ixx="0.0000021667" ixy="0.0" ixz="0.0" iyy="0.0000021667" iyz="0.0" izz="0.000004"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 3.14159265359"/>
+      <geometry>
+        <mesh filename="package://rm_9_2/models/mid360/meshes/mid360.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.04" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Mid360 LiDAR Joint -->
+  <joint name="mid360_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="mid360"/>
+    <origin xyz="0 0 0.6" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ros2_control -->
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+
+    <!-- Joint 0 -->
+    <joint name="0_joint">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <!-- Joint 1 -->
+    <joint name="1_joint">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <!-- Joint 2 -->
+    <joint name="2_joint">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <!-- Joint 3 -->
+    <joint name="3_joint">
+      <command_interface name="position">
+        <param name="min">-1.5708</param>
+        <param name="max">1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <!-- L1 Joint -->
+    <joint name="L1_JOINT">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <!-- L2 Joint -->
+    <joint name="L2_JOINT">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <!-- L3 Joint -->
+    <joint name="L3_JOINT">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <!-- L4 Joint -->
+    <joint name="L4_JOINT">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+  </ros2_control>
+
+  <!-- Gazebo plugin for ros2_control -->
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
+      <parameters>$(find cs_robot_description)/config/controller.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+  <!-- IMU Link -->
+  <link name="imu_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.01"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.2 0.2 0.8 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- IMU Joint -->
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Mid360 LiDAR Gazebo sensor -->
+  <gazebo reference="mid360">
+    <sensor name="mid360_lidar" type="gpu_ray">
+      <pose>0 0 0.03 0 0 0</pose>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>1500</samples>
+            <resolution>1.0</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>6.2831852</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>32</samples>
+            <resolution>1.0</resolution>
+            <min_angle>-0.12217304764</min_angle>
+            <max_angle>0.90757121104</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>40.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <namespace>/</namespace>
+          <remapping>~/out:=scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/PointCloud2</output_type>
+        <frame_name>mid360</frame_name>
+      </plugin>
+    </sensor>
+
+    <sensor name="mid360_imu" type="imu">
+      <always_on>true</always_on>
+      <update_rate>200</update_rate>
+      <visualize>true</visualize>
+      <plugin name="gazebo_ros_imu_controller" filename="libgazebo_ros_imu_sensor.so">
+        <ros>
+          <namespace>/</namespace>
+          <remapping>~/out:=imu</remapping>
+        </ros>
+        <frame_name>mid360</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- IMU Sensor on imu_link -->
+  <gazebo reference="imu_link">
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>200</update_rate>
+      <visualize>true</visualize>
+      <imu>
+        <angular_velocity>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.0002</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.0002</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.0002</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.017</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.017</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.017</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </z>
+        </linear_acceleration>
+      </imu>
+      <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+        <ros>
+          <namespace>/</namespace>
+          <remapping>~/out:=imu/data</remapping>
+        </ros>
+        <initial_orientation_as_reference>false</initial_orientation_as_reference>
+        <frame_name>imu_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- Ground Truth Odometry Plugin -->
+  <gazebo>
+    <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+      <ros>
+        <namespace>/</namespace>
+        <remapping>~/out:=odom/ground_truth</remapping>
+      </ros>
+      <update_rate>50.0</update_rate>
+      <body_name>base_link</body_name>
+      <frame_name>world</frame_name>
+      <gaussian_noise>0.01</gaussian_noise>
+      <xyz_offset>0 0 0</xyz_offset>
+      <rpy_offset>0 0 0</rpy_offset>
+    </plugin>
+  </gazebo>
+
+</robot>

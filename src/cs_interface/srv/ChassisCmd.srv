@@ -1,0 +1,7 @@
+# 底盘运动控制指令
+float64 vx    # 前向速度 m/s（车体系）
+float64 vy    # 侧向速度 m/s（车体系）
+float64 w     # 角速度 rad/s
+bool fold     # true: 云台折叠（缩头）  false: 展开
+---
+bool success
